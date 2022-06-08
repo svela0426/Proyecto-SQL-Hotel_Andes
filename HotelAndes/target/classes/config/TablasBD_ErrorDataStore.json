@@ -1,0 +1,27 @@
+{
+	"title": "Nombres de las tablas de Parranderos Uniandes para pruebas de la aplicación cuando la base de datos no existe o está caida",
+	"unidadPersistencia": "HotelAndesErrorDS",
+	"tablas":
+	[
+		"hotelandes_sequence",
+		"X_HOTEL",
+		"X_EMPLEADO",
+		"X_METODO_PAGO",
+		"X_CUENTA",
+		"X_PLAN_CONSUMO",
+		"X_SERVICIO_SOLICITADO",
+		"X_SERVICIO",
+		"X_TIPO_HABITACION",
+		"X_HABITACION",
+		"X_HABITACION_OFERTADA",
+		"X_CLIENTE",
+		"X_RESERVA",
+		"X_TIPO_RESERVA",
+		"X_HABITACION_RESERVADA",
+		"X_SERVICIO_OFRECIDO",
+		"X_CLIENTE_ACTIVO",
+		"X_EMPLEADO_ACTIVO",
+		"X_CUENTA_CARGADA",
+		"X_PLAN_OFRECIDO"
+	]
+}

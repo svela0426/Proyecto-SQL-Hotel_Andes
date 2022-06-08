@@ -1,0 +1,216 @@
+{
+	"title": "Aplicación transaccional de HotelAndes  Uniandes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle": "MetododePago",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarMetodopago"
+				},
+				{
+					"label": "Listar",
+					"event": "darMetododePagos"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminaMetodopagoPorId"
+				},
+				{
+					"label": "Buscar por Nombre",
+					"event": "buscarMetodopagoPorNombre"
+				}
+			]
+		},
+		{ "menuTitle": "Mantenimiento",
+		  "options":
+			[
+				{
+					"label": "Mostrar log HotelAndes",
+					"event": "mostrarLogHotelAndes"
+				},
+				{
+					"label": "Mostrar log datanucleus",
+					"event": "mostrarLogDatanuecleus"
+				},
+				{
+					"label": "Limpiar log de HotelAndes",
+					"event": "limpiarLogHotelAndes"
+				},
+				{
+					"label": "Limpiar log de datanucleus",
+					"event": "limpiarLogDatanucleus"
+				},
+				{
+					"label": "Limpiar Base de Datos",
+					"event": "limpiarBD"
+				}
+			]
+		},		
+		{ "menuTitle": "Documentación",
+		  "options":
+			[
+				{
+					"label": "Presentación general",
+					"event": "mostrarPresentacionGeneral"
+				},
+				{
+					"label": "Modelo conceptual",
+					"event": "mostrarModeloConceptual"
+				},
+				{
+					"label": "Esquema de la BD",
+					"event": "mostrarEsquemaBD"
+				},
+				{
+					"label": "Script creación de la BD",
+					"event": "mostrarScriptBD"
+				},
+				{
+					"label": "Arquitectura de referencia",
+					"event": "mostrarArqRef"
+				} 
+			]
+		},		
+		{ "menuTitle": "Acerca de ...",
+		  "options":
+			[
+				{
+					"label": "Acerca de ...",
+					"event": "acercaDe"
+				}
+			]
+		},
+		{ "menuTitle": "Requerimientos Funcionales ",
+			"options":
+			  [
+				{
+					"label": "RF1-Registrar rol de usuario",
+					"event": "registrarRol"
+				},
+				{
+					"label": "RF2-Registrar un usuario",
+					"event": "registrarUsuario"
+				},
+				{
+					"label": "RF3-Registrar un tipo de habitacion",
+					"event": "registrarTipoHabitacion"
+				},
+				{
+					"label": "RF4-Registrar una habitacion",
+					"event": "registrarHabitacion"
+				},
+				{
+					"label": "RF5-Registrar un servicio",
+					"event": "registrarServicio"
+				},
+				{
+					"label": "RF6-Registrar un plan de consumo",
+					"event": "registrarPlanConsumo"
+				},
+				{
+					"label": "RF7-Registrar una reserva",
+					"event": "registrarReserva"
+				},
+				{
+					"label": "RF8- Registrar un reserva de servicio",
+					"event": "registrarReservaServicio"
+				},
+				{
+					"label": "RF9-Registrar llegada de un cliente al Hotel",
+					"event": "registrarLlegadaCliente"
+				},
+				{
+					"label": "RF10-Registrar un consumo de Servicio",
+					"event": "registrarConsumo"
+				},
+				{
+					"label": "RF11- Registrar salida de un cliente",
+					"event": "registrarSalidaCliente"
+				},
+				{
+					"label": "RF12- Reservar alojamiento y servicios para una convencion",
+					"event": "reservarAlojamientoServiciosConvencion"
+				},
+				{
+					"label": "RF13- Cancelar reservas asociadas a una convencion",
+					"event": "cancelarReservasConvencion"
+				},
+				{
+					"label": "RF14- Registrar el fin de una convencion",
+					"event": "registrarFinDeConvencion"
+				},
+				{
+					"label": "RF15- Registrar entrada del mantenimiento",
+					"event": ""
+				},
+				{
+					"label": "RF16- Registrar el fin del mantenimiento",
+					"event": ""
+				}
+			  ]
+		  },
+		
+		  { "menuTitle": "Requerimientos Funcionales de consulta ",
+			"options":
+			  [
+				{
+					"label": "RFC1-MOSTRAR EL DINERO RECOLECTADO POR SERVICIOS EN CADA HABITACIÓN",
+					"event": "consulta1"
+				},
+				{
+					"label": "RFC2-MOSTRAR LOS 20 SERVICIOS MÁS POPULARES",
+					"event": "consulta2"
+				},
+				{
+					"label": "RFC3-MOSTRAR EL ÍNDICE DE OCUPACIÓN DE CADA UNA DE LAS HABITACIONES",
+					"event": "consulta3"
+				},
+				{
+					"label": "RFC4-MOSTRAR LOS SERVICIOS QUE CUMPLEN CON CIERTA CARACTERÍSTICA",
+					"event": "consulta4"
+				},
+				{
+					"label": "RFC5-MOSTRAR EL CONSUMO EN HOTELANDES POR UN USUARIO",
+					"event": "consulta5"
+				},
+				{
+					"label": "RFC6-ANALIZAR LA OPERACIÓN DE HOTELANDES",
+					"event": "consulta6"
+				},
+				{
+					"label": "RFC7-ENCONTRAR LOS BUENOS CLIENTES",
+					"event": "consulta7"
+				},
+				{
+					"label": "RFC8-ENCONTRAR LOS SERVICIOS QUE NO TIENEN MUCHA DEMANDA",
+					"event": "consulta8"
+				},
+				{
+					"label": "RFC9-CONSULTAR CONSUMO EN HOTELANDES",
+					"event": "consulta9"
+				},
+				{
+					"label": "RFC10-CONSULTAR CONSUMO EN HOTELANDES V2",
+					"event": "consulta10"
+				},
+				{
+					"label": "RFC11-CONSULTAR FUNCIONAMIENTO",
+					"event": "consulta11"
+				},
+				{
+					"label": "RFC12-CONSULTAR LOS BUENOS CLIENTES",
+					"event": "consulta12"
+				}
+			  ]
+		  }
+		  
+		  			
+		
+	]
+}
+	

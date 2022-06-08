@@ -1,0 +1,530 @@
+CREATE SEQUENCE hotelandes_sequence;
+
+
+
+
+CREATE TABLE A_HOTEL
+    ( idHotel NUMBER,
+    nombre VARCHAR2(225 BYTE),
+    ubicacion VARCHAR2(225 BYTE) NOT NULL,
+    paginaweb VARCHAR2(225 BYTE) NOT NULL, 
+    NUMERO NUMBER,
+    CONSTRAINT HOTEL_PK PRIMARY KEY (idHotel));
+    
+
+ CREATE TABLE A_PLAN_CONSUMO
+    (idPlanConsumo NUMBER,
+    nombre VARCHAR2(225 BYTE),
+    costo NUMBER NOT NULL,
+    vigencia DATE,
+    CONSTRAINT PLAN_CONSUMO_PK PRIMARY KEY(idPlanConsumo));   
+
+CREATE TABLE A_USUARIO 
+   (id NUMBER,
+   numero NUMBER,
+   NOMBRE VARCHAR2(225 BYTE) NOT NULL,
+   APELLIDO VARCHAR2(225 BYTE) NOT NULL,
+   CORREO VARCHAR2(225 BYTE) NOT NULL,
+   CONSTRAINT A_USUARIO PRIMARY KEY (id ));
+
+
+
+
+CREATE TABLE A_METODO_PAGO
+    (idMetodo NUMBER,
+    tipo VARCHAR2(225 BYTE),
+    nombre VARCHAR2(225 BYTE),
+    CONSTRAINT B_METODO_PAGO_PK PRIMARY KEY (idMetodo));    
+
+
+
+
+
+CREATE TABLE A_CUENTA
+    (idCuenta NUMBER,
+    total NUMBER,
+    CONSTRAINT CUENTA_PK PRIMARY KEY (idCuenta) );
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_TIPO_HABITACION
+    (tipoHabitacion VARCHAR2(225 BYTE),
+    capacidad NUMBER,
+    area NUMBER,
+    CONSTRAINT TIPO_HABITACIONN_PK  PRIMARY KEY(tipoHabitacion));
+    
+
+
+
+
+CREATE TABLE A_SERVICIO
+    (idServicio NUMBER,
+    nombre VARCHAR2(225 BYTE),
+    descripcion VARCHAR2(225 BYTE),
+    area  NUMBER,
+    costo NUMBER,
+
+    CONSTRAINT SERVICIO_PK PRIMARY KEY (idServicio));
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_SERVICIO_SOLICITADO
+    (idServicio NUMBER,
+    numpersonas NUMBER,
+    Costo NUMBER,
+    fecha_solicitud DATE,
+    CONSTRAINT SERVICIO_SOLICITADO_PK PRIMARY KEY (idServicio));
+
+ALTER TABLE A_SERVICIO_SOLICITADO
+ADD CONSTRAINT fk_b_idservicio
+    FOREIGN KEY (idServicio)
+    REFERENCES A_SERVICIO(idServicio)
+ENABLE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_HABITACION
+    (idHabitacion NUMBER,
+    nombre VARCHAR2(225 BYTE),
+    tipoHabitacion VARCHAR2(225 BYTE),
+    numeroHabitacion VARCHAR2(225 BYTE),
+    idUsuario NUMBER,
+    CONSTRAINT ID_HABITACION_PK  PRIMARY KEY (idHabitacion));
+
+ALTER TABLE A_HABITACION
+ADD CONSTRAINT fk_b_ididusuario
+    FOREIGN KEY (idUsuario)
+    REFERENCES A_USUARIO(id)
+ENABLE;
+
+
+
+
+
+
+
+
+CREATE TABLE A_HABITACION_OFERTADA
+    (idHotel NUMBER,
+    idHabitacion NUMBER,
+    CONSTRAINT HABITACION_OFERTADA_PK PRIMARY KEY(idHotel,idHabitacion));
+
+ALTER TABLE A_HABITACION_OFERTADA
+ADD CONSTRAINT fk_b_idhabitacion
+    FOREIGN KEY (idHabitacion)
+    REFERENCES A_HABITACION(idHabitacion)
+ENABLE;
+
+ALTER TABLE A_HABITACION_OFERTADA
+ADD CONSTRAINT fk_b_idhHOTEL
+    FOREIGN KEY (idHotel)
+    REFERENCES A_HOTEL(idHotel)
+ENABLE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_TIPO_RESERVA
+    (idReserva NUMBER,
+    idPlanConsumo NUMBER, 
+    CONSTRAINT TIPO_RESERVA_PK PRIMARY KEY  (idReserva));
+
+ALTER TABLE A_TIPO_RESERVA
+ADD CONSTRAINT fk_b_idplandeconsumo
+    FOREIGN KEY (idPlanConsumo)
+    REFERENCES A_PLAN_CONSUMO(idPlanConsumo)
+ENABLE;
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_HABITACION_RESERVADA
+    (idHabitacion NUMBER,
+    idReserva NUMBER,
+    idCuenta NUMBER,
+    CONSTRAINT HABITACION_RESERVADA_PK  PRIMARY KEY(idHabitacion));
+
+
+ALTER TABLE A_HABITACION_RESERVADA
+ADD CONSTRAINT fk_b_idcuenta
+    FOREIGN KEY (idCuenta)
+    REFERENCES A_CUENTA(idCuenta)
+ENABLE;
+
+
+
+ALTER TABLE A_HABITACION_RESERVADA
+ADD CONSTRAINT fk_b_idcuenta_habitacion_
+    FOREIGN KEY (idHabitacion)
+    REFERENCES A_HABITACION(idHabitacion)
+ENABLE;
+
+
+
+
+
+CREATE TABLE A_SERVICIO_OFRECIDO
+    (idServicio NUMBER,
+    idHotel NUMBER,
+    CONSTRAINT PK_SERVICIO_OFRECIDO_PK PRIMARY KEY (idServicio,idHotel));
+
+ALTER TABLE A_SERVICIO_OFRECIDO
+ADD CONSTRAINT fk_b_idhootel
+    FOREIGN KEY (idHotel)
+    REFERENCES A_HOTEL(idHotel)
+ENABLE;  
+
+ALTER TABLE A_SERVICIO_OFRECIDO
+ADD CONSTRAINT fk_b_servicio_fk
+    FOREIGN KEY (idServicio)
+    REFERENCES A_SERVICIO(idServicio)
+ENABLE;  
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_PLANPAGO
+    (id NUMBER,
+    tipoHabitacion VARCHAR2(225 BYTE),
+    numeroHabitaciones NUMBER,
+    numero_peronas NUMBER,
+    fecha_inicio DATE,
+    fecha_final DATE,
+    estado VARCHAR2(225 BYTE),
+    CONSTRAINT id_PK_plan_pago PRIMARY KEY(id));
+
+ALTER TABLE A_PLANPAGO
+	ADD CONSTRAINT CK_ROL
+	CHECK (estado IN ('Activo', 'Inactivo', 'Pasada'))
+ENABLE;
+
+ALTER TABLE A_PLANPAGO
+ADD CONSTRAINT fk_b_itipoHabitacion
+    FOREIGN KEY (tipoHabitacion)
+    REFERENCES A_TIPO_HABITACION(tipoHabitacion)
+ENABLE; 
+
+
+CREATE TABLE A_RESERVA
+    (idReserva NUMBER,
+    fechaEntrada DATE,
+    fechaSalida DATE,
+    numeroPersonas NUMBER,
+    idCliente NUMBER,
+    plan_de_pago NUMBER,
+    estado  VARCHAR2(225 BYTE),
+    CONSTRAINT RESERVA_PK  PRIMARY KEY(idReserva));
+
+ALTER TABLE A_RESERVA
+ADD CONSTRAINT fk_b_idusuario
+    FOREIGN KEY (idCliente)
+    REFERENCES A_USUARIO(id)
+ENABLE;
+
+
+ALTER TABLE A_RESERVA
+ADD CONSTRAINT fk_b_plande_pago_
+    FOREIGN KEY (plan_de_pago)
+    REFERENCES A_PLANPAGO(id)
+ENABLE;
+
+
+ALTER TABLE A_RESERVA
+	ADD CONSTRAINT CK_estado
+	CHECK (estado IN ('Activo', 'Inactivo', 'Pasada'))
+ENABLE;
+
+
+
+ALTER TABLE A_TIPO_RESERVA
+ADD CONSTRAINT fk_b_reserva
+    FOREIGN KEY (idReserva)
+    REFERENCES A_RESERVA(idReserva)
+ENABLE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_CLIENTE
+    (id NUMBER,
+    metodoPago Number,
+    hotelPerteneciente Number,
+    idPlanPago Number,
+    CONSTRAINT id_PK PRIMARY KEY(id));
+
+ALTER TABLE A_CLIENTE
+ADD CONSTRAINT fk_b_usuario
+    FOREIGN KEY (id)
+    REFERENCES A_USUARIO(id)
+ENABLE; 
+
+ALTER TABLE A_CLIENTE
+ADD CONSTRAINT fk_b_metodoPago
+    FOREIGN KEY (metodoPago)
+    REFERENCES A_METODO_PAGO(idMetodo)
+ENABLE; 
+
+ALTER TABLE A_CLIENTE
+ADD CONSTRAINT fk_b_hotel_perteneciente
+    FOREIGN KEY (hotelPerteneciente)
+    REFERENCES A_HOTEL(idHotel)
+ENABLE; 
+
+
+ALTER TABLE A_CLIENTE
+ADD CONSTRAINT fk_b_pan_pago
+    FOREIGN KEY (idPlanPago)
+    REFERENCES A_PLANPAGO(id)
+ENABLE; 
+
+
+
+
+
+
+CREATE TABLE A_CLIENTE_ACTIVO
+    (idCliente NUMBER,
+    idReserva NUMBER,
+    CONSTRAINT CLIENTE_ACTIVOO_PK PRIMARY KEY(idCliente)); 
+
+ALTER TABLE A_CLIENTE_ACTIVO
+ADD CONSTRAINT fk_b_idReservaa
+    FOREIGN KEY (idReserva)
+    REFERENCES A_RESERVA(idReserva)
+ENABLE;   
+
+ALTER TABLE A_CLIENTE_ACTIVO
+ADD CONSTRAINT fk_b_idCliente
+    FOREIGN KEY (idCliente)
+    REFERENCES A_CLIENTE(id)
+ENABLE; 
+
+
+
+
+
+
+
+CREATE TABLE A_ROlUSUARIO
+    (id_Usuario NUMBER,
+    rol VARCHAR2(225 BYTE),
+    CONSTRAINT id_Usuario_rol PRIMARY KEY(id_Usuario));
+
+ALTER TABLE A_ROlUSUARIO
+ADD CONSTRAINT fk_b_rol_usuario
+    FOREIGN KEY (id_Usuario)
+    REFERENCES A_USUARIO(id)
+ENABLE; 
+
+
+ALTER TABLE A_ROlUSUARIO
+	ADD CONSTRAINT CK_ROLL
+	CHECK (rol IN ('Empleado', 'Cliente', 'Recepcionista','Organizador Eventos'))
+ENABLE;
+
+
+CREATE TABLE A_ORGANIZADOREVENTOS
+    (id_Organizador NUMBER,
+    plande_Pago NUMBER,
+    CONSTRAINT pk_id_Organizador PRIMARY KEY(id_Organizador));
+
+
+ALTER TABLE A_ORGANIZADOREVENTOS
+ADD CONSTRAINT fk_b_rol_Organizador
+    FOREIGN KEY (id_Organizador)
+    REFERENCES A_USUARIO(id)
+ENABLE;
+
+
+ALTER TABLE A_ORGANIZADOREVENTOS
+ADD CONSTRAINT fk_b_rol_plande_Pago
+    FOREIGN KEY (plande_Pago)
+    REFERENCES A_PLANPAGO(id)
+ENABLE;
+
+--- revisar---------------
+
+---QUITAR CAOACIDAD----- DE PLAN DE PAGO 
+
+
+
+
+
+------ toca revisar bien--------
+
+CREATE TABLE A_CONSUMOSCONVENCION
+    (id NUMBER,
+    servicio_solicitado NUMBER,
+    capacidad NUMBER,
+    total NUMBER,    
+    CONSTRAINT pk_id_consumos PRIMARY KEY(id,servicio_solicitado));
+
+
+ALTER TABLE A_CONSUMOSCONVENCION
+ADD CONSTRAINT fk_b_id
+    FOREIGN KEY (id)
+    REFERENCES A_PLANPAGO(id)
+ENABLE; 
+
+ALTER TABLE A_CONSUMOSCONVENCION
+ADD CONSTRAINT fk_b_servicio_solicitado
+    FOREIGN KEY (servicio_solicitado)
+    REFERENCES A_SERVICIO(idServicio)
+ENABLE; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_EMPLEADO_ACTIVO
+    (idHotel NUMBER,
+    idEmpleado NUMBER,
+    CONSTRAINT TIPO_HABITACION_PK PRIMARY KEY(idHotel));
+
+ALTER TABLE A_EMPLEADO_ACTIVO
+ADD CONSTRAINT fk_b_idEmpleadooo
+    FOREIGN KEY (idEmpleado)
+    REFERENCES A_USUARIO(id)
+ENABLE; 
+
+
+
+
+
+
+
+
+CREATE TABLE A_CUENTA_CARGADA
+    (idCuenta NUMBER,
+    idServicio NUMBER,
+    CONSTRAINT CUENTA_CARGADA_PK PRIMARY KEY (idCuenta,idServicio));
+
+ALTER TABLE A_CUENTA_CARGADA
+ADD CONSTRAINT fk_b_idServicioO
+    FOREIGN KEY (idServicio)
+    REFERENCES A_SERVICIO(idServicio)
+ENABLE; 
+
+ALTER TABLE A_CUENTA_CARGADA
+ADD CONSTRAINT fk_b_idCuenta_O
+    FOREIGN KEY (idCuenta)
+    REFERENCES A_CUENTA(idCuenta)
+ENABLE; 
+
+
+
+
+
+
+
+
+
+CREATE TABLE A_PLAN_OFRECIDO
+    (idPlanConsumo NUMBER,
+    idHotel NUMBER,
+    CONSTRAINT PLAN_OFRECIDO_PK PRIMARY KEY(idPlanConsumo,idHotel));
+
+ALTER TABLE A_PLAN_OFRECIDO
+ADD CONSTRAINT fk_b_idHotelL
+    FOREIGN KEY (idHotel)
+    REFERENCES A_HOTEL(idHotel)
+ENABLE; 
+
+ALTER TABLE A_PLAN_OFRECIDO
+ADD CONSTRAINT fk_b_plan_consumo_
+    FOREIGN KEY (idPlanConsumo)
+    REFERENCES A_PLAN_CONSUMO(idPlanConsumo)
+ENABLE; 
+
+
+ALTER TABLE A_HABITACION_RESERVADA
+ADD CONSTRAINT fk_b_idreserva
+    FOREIGN KEY (idReserva)
+    REFERENCES A_RESERVA(idReserva)
+ENABLE;
+
+
+
+
+
+
+
+
+
+
+COMMIT;
+
+
+
+

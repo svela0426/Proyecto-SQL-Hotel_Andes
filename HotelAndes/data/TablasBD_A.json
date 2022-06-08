@@ -1,0 +1,27 @@
+{
+	"title": "Nombres de las tablas de HotelAndes Uniandes para la aplicación A",
+	"unidadPersistencia": "HotelAndes",
+	"tablas":
+	[
+		"hotelandes_sequence",
+		"A_HOTEL",
+		"A_EMPLEADO",
+		"A_METODO_PAGO",
+		"A_CUENTA",
+		"A_PLAN_CONSUMO",
+		"A_SERVICIO_SOLICITADO",
+		"A_SERVICIO",
+		"A_TIPO_HABITACION",
+		"A_HABITACION",
+		"A_HABITACION_OFERTADA",
+		"A_CLIENTE",
+		"A_RESERVA",
+		"A_TIPO_RESERVA",
+		"A_HABITACION_RESERVADA",
+		"A_SERVICIO_OFRECIDO",
+		"A_CLIENTE_ACTIVO",
+		"A_EMPLEADO_ACTIVO",
+		"A_CUENTA_CARGADA",
+		"A_PLAN_OFRECIDO"
+	]
+}

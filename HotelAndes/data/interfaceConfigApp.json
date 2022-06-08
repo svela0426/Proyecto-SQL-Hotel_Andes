@@ -1,0 +1,119 @@
+{
+	"title": "Aplicación transaccional de HotelAndes  Uniandes",
+	"frameH": 600,
+	"frameW": 800,
+	"bannerPath": "./src/main/resources/config/logo.png",
+	"menuBar":
+	[
+		{ "menuTitle": "MetododePago",
+		  "options":
+			[
+				{
+					"label": "Adicionar",
+					"event": "adicionarMetodopago"
+				},
+				{
+					"label": "Listar",
+					"event": "darMetododePagos"
+				},
+				{
+					"label": "Borrar por Id",
+					"event": "eliminaMetodopagoPorId"
+				},
+				{
+					"label": "Buscar por Nombre",
+					"event": "buscarMetodopagoPorNombre"
+				}
+			]
+		},
+		{ "menuTitle": "Mantenimiento",
+		  "options":
+			[
+				{
+					"label": "Mostrar log HotelAndes",
+					"event": "mostrarLogHotelAndes"
+				},
+				{
+					"label": "Mostrar log datanucleus",
+					"event": "mostrarLogDatanuecleus"
+				},
+				{
+					"label": "Limpiar log de parranderos",
+					"event": "limpiarLogHotelAndes"
+				},
+				{
+					"label": "Limpiar log de datanucleus",
+					"event": "limpiarLogDatanucleus"
+				},
+				{
+					"label": "Limpiar Base de Datos",
+					"event": "limpiarBD"
+				}
+			]
+		},		
+		{ "menuTitle": "Documentación",
+		  "options":
+			[
+				{
+					"label": "Presentación general",
+					"event": "mostrarPresentacionGeneral"
+				},
+				{
+					"label": "Modelo conceptual",
+					"event": "mostrarModeloConceptual"
+				},
+				{
+					"label": "Esquema de la BD",
+					"event": "mostrarEsquemaBD"
+				},
+				{
+					"label": "Script creación de la BD",
+					"event": "mostrarScriptBD"
+				},
+				{
+					"label": "Arquitectura de referencia",
+					"event": "mostrarArqRef"
+				} 
+			]
+		},		
+		{ "menuTitle": "Acerca de ...",
+		  "options":
+			[
+				{
+					"label": "Acerca de ...",
+					"event": "acercaDe"
+				}
+			]
+		},
+		{ "menuTitle": "Requerimientos Funcionales ",
+			"options":
+			  [
+				{
+					"label": "RF7-Registrar una reserva",
+					"event": "mostrarPresentacionGeneral"
+				},
+				{
+					"label": "RF8- Registrar un servicio",
+					"event": "mostrarModeloConceptual"
+				},
+				{
+					"label": "RF9-Registrar llegada de un cliente al Hotel",
+					"event": "mostrarEsquemaBD"
+				},
+				{
+					"label": "RF10-Registrar un consumo de Servicio",
+					"event": "mostrarScriptBD"
+				},
+				{
+					"label": "RF11- Registrar salida de un cliente",
+					"event": "mostrarArqRef"
+				} 
+			  ]
+		  }
+	
+		  
+		  			
+		
+	]
+}
+	

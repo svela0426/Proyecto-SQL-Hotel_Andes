@@ -1,0 +1,15 @@
+15:37:05,914 (AWT-EventQueue-0) INFO  [uniandes.isis2304.hotelandes.negocio.Hotelandes] - Realizando requerimiento de consulta 12:
+15:37:05,988 (AWT-EventQueue-0) INFO  [uniandes.isis2304.hotelandes.negocio.Hotelandes] - Listando Req 12: 0 encontrados
+15:41:02,958 (main) INFO  [uniandes.isis2304.hotelandes.interfazApp.interfazHotelandesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:41:02,959 (main) INFO  [uniandes.isis2304.hotelandes.interfazApp.interfazHotelandesApp] - Se aplica configuración indicada en el archivo de configuración
+15:41:02,997 (main) INFO  [uniandes.isis2304.hotelandes.interfazApp.interfazHotelandesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:41:09,084 (AWT-EventQueue-0) INFO  [uniandes.isis2304.hotelandes.negocio.Hotelandes] - Realizando requerimiento de consulta 12:
+15:41:09,235 (AWT-EventQueue-0) INFO  [uniandes.isis2304.hotelandes.negocio.Hotelandes] - Listando Req 12: 0 encontrados
+15:42:11,827 (main) INFO  [uniandes.isis2304.hotelandes.interfazApp.interfazHotelandesApp] - Se encontró un archivo de configuración válido: Interfaz
+15:42:11,829 (main) INFO  [uniandes.isis2304.hotelandes.interfazApp.interfazHotelandesApp] - Se aplica configuración indicada en el archivo de configuración
+15:42:11,909 (main) INFO  [uniandes.isis2304.hotelandes.interfazApp.interfazHotelandesApp] - Se encontró un archivo de configuración válido: Tablas BD
+15:42:24,484 (AWT-EventQueue-0) INFO  [uniandes.isis2304.hotelandes.negocio.Hotelandes] - Limpiando la BD de Hotelandes
+15:42:24,983 (AWT-EventQueue-0) ERROR [uniandes.isis2304.hotelandes.persistencia.PersistenciaHotelAndes] - Exception : Error con la ejecucion de Query de SQL "DELETE FROM A_CLIENTE".
+ORA-02292: restricción de integridad (ISIS2304A07202210.FK_B_IDCLIENTE) violada - registro secundario encontrado
+
+15:42:25,036 (AWT-EventQueue-0) INFO  [uniandes.isis2304.hotelandes.negocio.Hotelandes] - Limpiando la BD de Hotelandes: Listo!
